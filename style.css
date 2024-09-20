@@ -1,0 +1,293 @@
+/* Reset e estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Estilo do cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgb(27, 26, 26);
+    color: white;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Seção Home */
+.home {
+    position: relative;
+    height: 70vh;
+    background: url('img/000003.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.home h1 {
+    font-size: 48px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Seção Sobre */
+#sobre {
+    padding: 80px;
+    background-color: #f4f4f4;
+    text-align: justify;
+}
+
+#sobre h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.text-highlight {
+    width: 1000px;
+    margin: 0 auto;
+    font-size: 18px;
+    background-color: #b4b9c9;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Galeria */
+#galeria {
+    text-align: center;
+    padding: 20px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajustado para evitar colunas muito estreitas */
+    gap: 20px;
+}
+
+.gallery-item {
+    flex: 1;
+    max-width: 100%; /* Garante que a imagem ocupe a largura da coluna disponível */
+    margin: 0 auto; /* Centraliza os itens no caso de sobrar espaço */
+}
+
+.gallery-item img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centraliza a imagem */
+}
+
+.gallery-item p {
+    margin-top: 10px;
+    font-size: 16px; /* Aumentado para melhorar a leitura */
+    color: #555;
+    text-align: center; /* Centraliza o texto abaixo da imagem */
+}
+
+
+.gallery-item p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Seção info-fiis */
+#info-fiis {
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+#info-fiis h2 {
+    margin-bottom: 40px;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.info-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.image-wrapper {
+    flex: 1 1 300px;
+    max-width: 40%;
+    display: flex;
+    align-items: stretch;
+}
+
+.image-wrapper img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+.text-wrapper {
+    flex: 1 1 300px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Seções Vídeo e Mapa */
+#video, #localizacao {
+    margin-top: 30px;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+/* Botão */
+#botao {
+    padding: 20px;
+    margin: 40px auto;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0044cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Seção Contato */
+#contato {
+    padding: 40px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+form input {
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #0044cc;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+form button:hover {
+    background-color: #003399;
+}
+
+/* Rodapé */
+footer {
+    padding: 20px;
+    background-color: rgb(27, 26, 26);
+    color: white;
+    text-align: center;
+}
+
+/* Estilos Responsivos */
+
+/* Para telas menores que 768px (smartphones) */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .home h1 {
+        font-size: 32px;
+    }
+
+    .text-highlight {
+        width: 100%;
+    }
+
+    .info-container {
+        flex-direction: column;
+    }
+
+    .image-wrapper, .text-wrapper {
+        max-width: 100%;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    form input {
+        width: 100%;
+    }
+}
+
+/* Para telas entre 769px e 1024px (tablets e notebooks) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .home h1 {
+        font-size: 36px;
+    }
+
+    .info-container {
+        flex-direction: column;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    form input {
+        width: 80%;
+    }
+}
