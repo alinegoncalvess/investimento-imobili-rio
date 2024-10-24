@@ -2,12 +2,10 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Garante que padding e border não afetam as dimensões */
 }
 
 body {
-    margin: 0; 
-    padding: 0;
     max-width: 100vw;
     overflow-x: hidden;
     font-family: Arial, sans-serif;
@@ -19,10 +17,34 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 1rem;
     background-color: black;
     color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+.menu-icon {
+    display: none; /* Ocultar por padrão */
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav.hidden {
+    opacity: 0;
+    height: 0; /* Para esconder o menu */
+    overflow: hidden; /* Para esconder o conteúdo */
+}
+
+.hidden {
+    display: none; /* Esconde o menu quando a classe 'hidden' está presente */
+}
+
 
 .logo {
     font-size: 24px;
@@ -31,7 +53,9 @@ header {
 
 nav ul {
     list-style: none;
-    display: flex;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Para telas grandes */
 }
 
 nav ul li {
@@ -42,9 +66,15 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav ul.show {
+    display: block; /* Para telas pequenas, use display block */
 }
 
 nav ul li a:hover {
+    color: #ccc;
     text-decoration: underline;
 }
 
@@ -71,14 +101,12 @@ nav ul li a:hover {
     padding: 80px;
     background-color: #b4b9c9;
     text-align: justify;
-    
 }
 
 #sobre h2 {
     font-size: 32px;
     margin-bottom: 30px;
     text-align: center;
-    
 }
 
 .text-highlight {
@@ -90,13 +118,16 @@ nav ul li a:hover {
 
 .text-highlight p {
     font-size: 18px;
-    margin: 30px;
+    line-height: 1.5;
+     max-width: 90%;
+     margin: 0 auto;
+    text-align: justify;
 }
 
 /* Galeria */
 #galeria {
     text-align: center;
-    padding: 30px;
+    padding: 40px;
 }
 
 #galeria h2 {
@@ -107,33 +138,33 @@ nav ul li a:hover {
 }
 
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajustado para evitar colunas muito estreitas */
-    gap: 20px;
+    display: flex;
+    grid-template-columns: repeat(3, 1fr); /* Garante três colunas */
+    gap: 20px; /* Espaço entre os itens */
+    
 }
 
 .gallery-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Garante que o texto e a imagem ocupem a altura total */
-    height: 100%; /* Garante que todos os itens da galeria tenham a mesma altura */
+    background-color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid #9e9494;
 }
 
 .gallery-item img {
-    width: 100%;
-    height: auto;
-    max-width: 300%;
+    width: 100%; /* Imagem ocupa toda a largura do contêiner */
+    height: auto; /* Mantém a proporção */
     border-radius: 10px;
+    border: solid #fff;
 }
 
-
 .gallery-item p {
-    margin-top: 30px;
-    padding: 30px;
-    font-size: 16px;
+    margin: 15px;
     color: #fff;
+    font-size: 16px;
     text-align: justify;
-    word-spacing: -3px;
+    line-height: 1.6;
+    word-spacing: 1px;
 }
 
 /* Seção info-fiis */
@@ -154,34 +185,38 @@ nav ul li a:hover {
 
 .info-container {
     display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+     gap: 20px; /* Espaçamento entre a imagem e o texto */
+     align-items: flex-start; /* Garante que ambos comecem alinhados no topo */
+     margin-bottom: 20px;
 }
 
 .image-wrapper {
-    width: 50%;
-    margin: 0 auto;
-    overflow: hidden; /* Para que o border-radius funcione corretamente */
+    flex: 1; /* Para que o wrapper ocupe o mesmo espaço que o texto */
+    width: 400%; /* Ajuste conforme necessário */
+    margin-right: 20px; /* Espaço entre imagem e texto */
 }
 
 .image-wrapper img {
-    width: 100%; /* A imagem ocupa 100% da largura do wrapper */
-    height: auto; /* Mantém a proporção da imagem */
-    object-fit: cover; /* Faz com que a imagem cubra o contêiner sem distorção */
+    width: 100%;
+    height: auto; /* Faz a imagem se ajustar à altura do contêiner */
+    object-fit: cover;
     border-radius: 10px;
+   
 }
 
 .text-wrapper {
-    flex: 0 0 50%; /* Define a largura da text-wrapper como 50% */
-    margin: 0; /* Remova a margem para um alinhamento perfeito */
-    padding: 30px;
+    flex: 1; /* O texto também ocupa um espaço flexível */
+  }
+
+.text-wrapper p{
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    text-align: justify;
     border: solid rgb(94, 89, 89);
     border-radius: 10px;
-    text-align: justify;
-
+    
 }
 
 .image-wrapper, .text-wrapper {
@@ -233,24 +268,16 @@ nav ul li a:hover {
 }
 
 .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #0044cc;
+    background-color: #4CAF50;
     color: white;
-    text-decoration: none; /* Remove o sublinhado */
-    border: 2px solid transparent; /* Adiciona uma borda transparente para manter o espaço */
+    padding: 15px 30px;
     border-radius: 5px;
-    font-size: 18px;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    transition: border-color 0.3s; /* Transição suave para a borda */
-}
+    transition: background-color 0.3s ease;
+  }
 
 /* Efeito hover para o botão */
 .btn:hover {
-    background-color: #003399;
-    border-color: #fff; /* Exibe a borda ao passar o mouse */
+    background-color: #45a049;
 }
 
 /* Seção Contato */
@@ -261,18 +288,19 @@ nav ul li a:hover {
 }
 
 form {
-    display: flex;
-    flex-direction: column; /* Empilha os inputs verticalmente */
-    align-items: center; /* Centraliza os inputs */
+    display: flex; /* Corrigido para usar 'flex' */
+    flex-direction: column; /* Organiza os inputs na vertical */
     max-width: 500px; /* Limita a largura do formulário */
     margin: 0 auto; /* Centraliza o formulário */
+    align-items: center;
 }
 
 form input {
+    margin-bottom: 15px;
     padding: 10px;
     margin: 10px 0; /* Ajusta as margens */
     width: 100%; /* Ajusta os inputs para ocuparem toda a largura */
-    max-width: 200px; /* Define uma largura máxima */
+    max-width: 300px; /* Define uma largura máxima */
 }
 
 form button {
@@ -287,45 +315,114 @@ form button {
     max-width: 200px; /* Define uma largura máxima para o botão */
 }
 
-form button:hover {
-    background-color: #003399;
-}
-
-
-/* Rodapé */
+/* Estilo do rodapé */
 footer {
-    padding: 20px;
-    background-color: rgb(27, 26, 26);
-    color: white;
     text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+  }
+  
+/* Estilos para telas maiores */
+@media (min-width: 768px) {
+    .menu-icon {
+        display: none; /* Oculta o ícone em telas grandes */
+    }
+
+    nav {
+        display: block; /* Exibe o menu por padrão */
+    }
 }
 
-/* Ajustes na responsividade para telas menores */
+/* Estilos para telas menores */
 @media (max-width: 768px) {
-    .info-container {
-        flex-direction: column; /* Empilha os elementos na vertical em telas menores */
+    .menu-icon {
+        display: block; /* Exibe o ícone do menu em telas pequenas */
+        cursor: pointer;
+        font-size: 30px; /* Tamanho do ícone do menu */
+        color: white;
     }
 
-    .image-wrapper, .text-wrapper {
-        max-width: 100%; /* Garante que ocupem toda a largura da tela */
+    nav {
+        display: none; /* Esconde o menu por padrão */
+        position: absolute;
+        top: 60px; /* Abaixo do cabeçalho */
+        right: 0;
+        background-color: black;
+        width: 100%;
+        transition: all 0.3s ease; /* Adiciona uma transição suave */
+        z-index: 1000;
     }
-    
-    /* Ajustes no cabeçalho */
-    header {
-        flex-direction: column;
-        text-align: center;
+
+    nav.show {
+        display: block; /* Mostrar os links quando a classe show é adicionada */
     }
-    
+
     nav ul {
-        flex-direction: column;
-        gap: 10px;
+        flex-direction: column; /* Muda para coluna em telas pequenas */
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        text-align: center; /* Centraliza os links */
     }
 
-    /* Ajustes na galeria */
+    nav ul li {
+        margin: 10px 0; /* Espaçamento vertical */
+    }
+
+    nav ul li a {
+        font-size: 20px;
+        color: white; /* Cor branca para os links */
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+        border-bottom: 1px solid white; /* Adiciona uma borda para separar os links */
+    }
+
     .gallery {
-        grid-template-columns: 1fr; /* Exibe uma única coluna em telas menores */
-    }
-}
+        display: grid;
+        grid-template-columns: 1fr; /* Uma coluna para telas menores */
+        gap: 20px;
+      }
 
+      .info-container {
+        flex-direction: column;
+      }
+    
+      .image-wrapper {
+        width: 100%;
+      }
+    
+      .text-wrapper {
+        width: 100%;
+      }
+
+      .text-highlight p {
+        font-size: 14px;
+        line-height: 1.6;
+        max-width: 100%;
+        padding: 0 10px;
+        text-align: left;
+      }
+
+      .text-wrapper p {
+        font-size: 14px;
+        line-height: 1.6;
+        text-align: left; /* Remove o justificado em telas pequenas */
+        padding: 0 10px;  /* Adiciona um espaçamento interno para melhorar a leitura */
+  }
+
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .image-wrapper {
+    margin-bottom: 20px; /* Espaçamento entre a imagem e o texto */
+  }
+    
+}
 
 
